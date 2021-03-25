@@ -11,5 +11,30 @@
         style: 'mapbox://styles/encodingintuition/ckmmp7p3e1ik217ql167s9a2h', // style URL
         center: [-73.92332, 43.77172], // starting position [lng, lat]
         zoom: 9 // starting zoom
+
     });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-73.92332, 43.77172])
+        .addTo(map);
+    var markerHeight = 50,
+        markerRadius = 10,
+        linearOffset = 25;
+    var popupOffsets = {
+        'top': [0, 0],
+        'top-left': [0, 0],
+        'top-right': [0, 0],
+        'bottom': [0, -markerHeight],
+        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'left': [markerRadius, (markerHeight - markerRadius) * -1],
+        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+    };
+    var popup = new mapboxgl.Popup({
+            offset: popupOffsets,
+            className: 'my-class'
+        })
+        .setLngLat([-73.92332, 43.77172])
+        .setHTML("<h4>Check out the Gem!!</h4>  lil'Nonys Bakery")
+        .setMaxWidth("200px")
+        .addTo(map);
 </script>
